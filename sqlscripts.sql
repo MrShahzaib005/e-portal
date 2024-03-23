@@ -38,5 +38,52 @@ CREATE TABLE `e_portal`.`company_size` (
   `updated_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
   
+  CREATE TABLE `e_portal`.`news_event` (
+  `id` INT NOT NULL,
+  `event_name` VARCHAR(250) NOT NULL,
+  `event_description` TEXT NOT NULL,
+  `event_date` DATETIME NOT NULL,
+  `event_expiry` DATETIME NOT NULL,
+  `event_organizer` VARCHAR(250) NOT NULL,
+  `status` TINYINT(1) NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+  
+  CREATE TABLE `e_portal`.`news_event` (
+  `id` INT NOT NULL,
+  `event_name` VARCHAR(250) NOT NULL,
+  `event_description` TEXT NOT NULL,
+  `event_date` DATETIME NOT NULL,
+  `event_expiry` DATETIME NOT NULL,
+  `event_organizer` VARCHAR(250) NOT NULL,
+  `status` TINYINT(1) NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+  
+  CREATE TABLE `e_portal`.`card_type` (
+  `id` INT NOT NULL,
+  `card_title` VARCHAR(250) NOT NULL,
+  `card_status` VARCHAR(50) NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  `status` TINYINT NOT NULL,
+  PRIMARY KEY (`id`));
+  
+  CREATE TABLE `e_portal`.`complaints` (
+  `id` INT NOT NULL,
+  `title` VARCHAR(250) NOT NULL,
+  `description` TEXT NOT NULL,
+  `type` VARCHAR(250) NOT NULL,
+  `issue_date` DATETIME NOT NULL,
+  `complaint_status` VARCHAR(50) NOT NULL,
+  `status` TINYINT NOT NULL,
+  `assign_to` VARCHAR(45) NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+  
   
  
