@@ -30,6 +30,13 @@ CREATE TABLE `e_portal`.`users` (
   `updated_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
 
+CREATE TABLE `e_portal`.`company_size` (
+  `id` INT NOT NULL,
+  `comp_size_name` VARCHAR(250) NOT NULL,
+  `comp_size_status` TINYINT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
   
   
  
