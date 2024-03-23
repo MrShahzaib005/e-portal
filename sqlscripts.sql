@@ -18,5 +18,18 @@ CREATE TABLE `e_portal`.`users` (
   `updated_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
   
+  CREATE TABLE `e_portal`.`tenant_company` (
+  `id` INT NOT NULL,
+  `company_name` VARCHAR(250) NOT NULL,
+  `company_email` VARCHAR(250) NOT NULL,
+  `phone_number` VARCHAR(45) NOT NULL,
+  `contact_person_name` VARCHAR(250) NOT NULL,
+  `contact_person_email` VARCHAR(250) NOT NULL,
+  `company_size` INT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+  
   
  
