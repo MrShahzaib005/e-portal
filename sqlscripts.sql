@@ -10,5 +10,13 @@ CREATE TABLE `e_portal`.`users` (
   `updated_at` DATETIME NULL,
   PRIMARY KEY (`id`));
   
+  CREATE TABLE `e_portal`.`user_role` (
+  `id` INT NOT NULL,
+  `role_name` VARCHAR(250) NOT NULL,
+  `status` TINYINT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+  
   
  
