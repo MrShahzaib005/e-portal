@@ -84,6 +84,60 @@ CREATE TABLE `e_portal`.`company_size` (
   `updated_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
 
+CREATE TABLE `e_portal`.`parking_tags` (
+  `id` INT NOT NULL,
+  `tag_name` VARCHAR(250) NOT NULL,
+  `issued_to` INT NOT NULL,
+  `car_number` VARCHAR(45) NOT NULL,
+  `status` TINYINT(1) NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  `tag_expiry` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `e_portal`.`gate_pass` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(250) NOT NULL,
+  `issued_to` VARCHAR(250) NOT NULL,
+  `issued_by` INT NOT NULL,
+  `issued_date` DATETIME NOT NULL,
+  `expiry` DATETIME NOT NULL,
+  `status` TINYINT(1) NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `e_portal`.`meeting_room` (
+  `id` INT NOT NULL,
+  `location` VARCHAR(45) NOT NULL,
+  `start_time` DATETIME NOT NULL,
+  `duration` DATETIME NOT NULL,
+  `description` VARCHAR(250) NOT NULL,
+  `reserved_by` VARCHAR(45) NOT NULL,
+  `status` TINYINT(1) NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `e_portal`.`meeting_locations` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `status` TINYINT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `e_portal`.`petty_cash` (
+  `id` INT NOT NULL,
+  `title` VARCHAR(45) NOT NULL,
+  `amount` INT NOT NULL,
+  `used_by` VARCHAR(250) NOT NULL,
+  `notes` TEXT NOT NULL,
+  `requested_by` VARCHAR(250) NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
   
   
  
