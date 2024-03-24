@@ -138,6 +138,52 @@ CREATE TABLE `e_portal`.`petty_cash` (
   `updated_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
 
+CREATE TABLE `e_portal`.`event_permit_request` (
+  `id` INT NOT NULL,
+  `title` VARCHAR(250) NOT NULL,
+  `permit_decription` TEXT NOT NULL,
+  `requested_by` INT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `e_portal`.`cleaning_services` (
+  `id` INT NOT NULL,
+  `type(monthly,1 time special)` VARCHAR(50) NOT NULL,
+  `requested_by` INT NOT NULL,
+  `cost` INT NOT NULL,
+  `service_status` VARCHAR(50) NOT NULL,
+  `status` TINYINT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `e_portal`.`inventory` (
+  `id` INT NOT NULL,
+  `item_name` VARCHAR(250) NOT NULL,
+  `category` VARCHAR(250) NOT NULL,
+  `quantity` INT NOT NULL,
+  `unti_price` INT NOT NULL,
+  `reorder_level` INT NOT NULL,
+  `supplier_id` INT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  `status` TINYINT NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `e_portal`.`assets` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(250) NOT NULL,
+  `type` VARCHAR(45) NOT NULL,
+  `location` VARCHAR(45) NOT NULL,
+  `asset_status` VARCHAR(45) NOT NULL,
+  `purchase_date` DATETIME NOT NULL,
+  `price` INT NOT NULL,
+  `status` TINYINT NOT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+
   
   
  
