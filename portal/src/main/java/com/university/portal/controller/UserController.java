@@ -1,5 +1,8 @@
 package com.university.portal.controller;
+import com.university.portal.model.Assets;
 import com.university.portal.model.Users;
+import com.university.portal.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -7,28 +10,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
-    @PostMapping("/signup")
-    public ResponseEntity<String> registerUser(@RequestBody Users user) {
+    @Autowired
+    UserService userService;
 
-        ResponseEntity response = null;
-
-                response = ResponseEntity
-                        .status(HttpStatus.CREATED)
-                        .body(user);
-
-        return response;
+    @GetMapping("/users")
+    public String index(){
+        return "hello from user controller";
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<String> loginUser() {
-
-        ResponseEntity response = null;
-
-        response = ResponseEntity
-                .status(HttpStatus.FOUND)
-                .body("I am in login method");
-
-        return response;
+    @PostMapping("/users/store")
+    public Users saveUser(@RequestBody Users users){
+        return userService.create(users);
     }
 
 
