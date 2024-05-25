@@ -1,0 +1,4 @@
+ALTER TABLE `uni-portal`.`cards_tenant_workers` 
+CHANGE COLUMN `id` `id` INT NOT NULL AUTO_INCREMENT ;
+
+"Making the id AI generative".

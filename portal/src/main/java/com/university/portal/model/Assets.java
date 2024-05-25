@@ -19,6 +19,11 @@ public class Assets {
     private String type;
     private String location;
     private String asset_status;
+    private String purchase_date;
+    private int price;
+    private boolean status;
+    private String created_at;
+    private String updated_at;
 
 
 }
