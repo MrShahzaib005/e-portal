@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AssetsService_impl implements AssetsService {
+public class AssetsServiceImpl implements AssetsService {
 
     @Autowired
     AssetRepository assetRepository;
