@@ -6,6 +6,9 @@ import com.university.portal.service.AssetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class AssetsServiceImpl implements AssetsService {
 
@@ -16,4 +19,26 @@ public class AssetsServiceImpl implements AssetsService {
     public Assets create(Assets assets) {
         return assetRepository.save(assets);
     }
+
+    @Override
+    public void deleteAsset(Integer assetId) {
+        assetRepository.deleteById(assetId);
+    }
+
+    @Override
+    public Assets update(Assets assets) {
+       return assetRepository.save(assets);
+    }
+
+    @Override
+    public List<Assets> getAllAssets() {
+        return assetRepository.findAll();
+    }
+
+    @Override
+    public Optional<Assets> getAsset(Integer assetId) {
+        return assetRepository.findById(assetId);
+    }
+
+
 }
