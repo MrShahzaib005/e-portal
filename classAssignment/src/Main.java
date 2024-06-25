@@ -1,15 +1,14 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
-class FileAnalyzer{
+class Main{
     public static void main(String[] args) {
         System.out.print("Enter a filename: ");
         String filename = new Scanner(System.in).nextLine();
 
         try {
-            File file = new File(filename);
-            Scanner fileScanner = new Scanner(file);
+            File file1 = new File(filename);
+            Scanner fileScanner = new Scanner(file1);
 
             int numChars = 0;
             int numWords = 0;

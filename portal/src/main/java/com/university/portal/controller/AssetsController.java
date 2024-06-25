@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+//Main file which contains requests services for tomcat server.
 @RestController
 public class AssetsController {
     @Autowired
@@ -37,6 +37,12 @@ public class AssetsController {
     @PostMapping("/assets/update")
     public Assets updateassets(@RequestBody Assets assets){
         return assetsService.update(assets);
+    }
+
+    @DeleteMapping("assets/delete")
+    public ResponseEntity<Void> deleteAllEntities() {
+        assetsService.deleteAllEntities();
+        return ResponseEntity.noContent().build();
     }
 
 }

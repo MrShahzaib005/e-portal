@@ -1,5 +1,5 @@
 package com.university.portal.service;
-
+//interface which contains methods.
 import com.university.portal.model.Assets;
 
 import java.util.List;
@@ -16,4 +16,8 @@ public interface AssetsService {
     public List<Assets> getAllAssets();
 
     public Optional<Assets> getAsset(Integer assetId);
+
+    public void deleteAllEntities();
+
+
 }

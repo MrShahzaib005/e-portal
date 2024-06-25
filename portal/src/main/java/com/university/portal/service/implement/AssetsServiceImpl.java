@@ -1,5 +1,5 @@
 package com.university.portal.service.implement;
-
+//implementation of interface.
 import com.university.portal.model.Assets;
 import com.university.portal.repository.AssetRepository;
 import com.university.portal.service.AssetsService;
@@ -39,6 +39,12 @@ public class AssetsServiceImpl implements AssetsService {
     public Optional<Assets> getAsset(Integer assetId) {
         return assetRepository.findById(assetId);
     }
+
+    @Override
+    public void deleteAllEntities() {
+        assetRepository.deleteAll();
+    }
+
 
 
 }
