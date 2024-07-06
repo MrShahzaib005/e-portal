@@ -1,13 +1,15 @@
--- MySQL dump 10.13  Distrib 8.3.0, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `e_portal` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `e_portal`;
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: e_portal
 -- ------------------------------------------------------
--- Server version	8.3.0
+-- Server version	8.4.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,7 +25,7 @@ DROP TABLE IF EXISTS `assets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `assets` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `type` varchar(45) NOT NULL,
   `location` varchar(45) NOT NULL,
@@ -34,7 +36,7 @@ CREATE TABLE `assets` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +45,7 @@ CREATE TABLE `assets` (
 
 LOCK TABLES `assets` WRITE;
 /*!40000 ALTER TABLE `assets` DISABLE KEYS */;
+INSERT INTO `assets` VALUES (1,'land1','fiexed asset','islamabad','current asset','2024-03-23 00:00:00',23000,1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `assets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,14 +57,14 @@ DROP TABLE IF EXISTS `card_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `card_type` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `card_title` varchar(250) NOT NULL,
   `card_status` varchar(50) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `status` tinyint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,6 +73,7 @@ CREATE TABLE `card_type` (
 
 LOCK TABLES `card_type` WRITE;
 /*!40000 ALTER TABLE `card_type` DISABLE KEYS */;
+INSERT INTO `card_type` VALUES (1,'test card','test card title','2024-03-23 00:00:00','2024-03-23 00:00:00',1),(2,'test card','test card title','2024-03-23 00:00:00','2024-03-23 00:00:00',1),(3,'test card','test card title','2024-03-23 00:00:00','2024-03-23 00:00:00',1),(4,'test cardm 2','test card title','2024-03-23 00:00:00','2024-03-23 00:00:00',1),(5,'test cardm 2','test card title','2024-03-23 00:00:00','2024-03-23 00:00:00',1);
 /*!40000 ALTER TABLE `card_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,9 +85,9 @@ DROP TABLE IF EXISTS `cards_tenant_workers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cards_tenant_workers` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `card_type` varchar(250) NOT NULL,
-  `card_title` varchar(250) NOT NULL,
+  `card_title` int NOT NULL,
   `card_issue_date` datetime NOT NULL,
   `card_expiry_date` datetime NOT NULL,
   `card_approval` varchar(45) NOT NULL,
@@ -110,7 +114,7 @@ DROP TABLE IF EXISTS `cleaning_services`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cleaning_services` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `type(monthly,1 time special)` varchar(50) NOT NULL,
   `requested_by` int NOT NULL,
   `cost` int NOT NULL,
@@ -118,7 +122,9 @@ CREATE TABLE `cleaning_services` (
   `status` tinyint NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `equested_by_idx` (`requested_by`),
+  CONSTRAINT `equested_by` FOREIGN KEY (`requested_by`) REFERENCES `tenant_company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -165,7 +171,7 @@ DROP TABLE IF EXISTS `complaints`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `complaints` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(250) NOT NULL,
   `description` text NOT NULL,
   `type` varchar(250) NOT NULL,
@@ -196,13 +202,16 @@ DROP TABLE IF EXISTS `event_permit_request`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `event_permit_request` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(250) NOT NULL,
   `permit_decription` text NOT NULL,
   `requested_by` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `status` tinyint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `requested_by_idx` (`requested_by`),
+  CONSTRAINT `requested_by` FOREIGN KEY (`requested_by`) REFERENCES `tenant_company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -223,7 +232,7 @@ DROP TABLE IF EXISTS `gate_pass`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gate_pass` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `issued_to` varchar(250) NOT NULL,
   `issued_by` int NOT NULL,
@@ -253,7 +262,7 @@ DROP TABLE IF EXISTS `inventory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `inventory` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `item_name` varchar(250) NOT NULL,
   `category` varchar(250) NOT NULL,
   `quantity` int NOT NULL,
@@ -310,16 +319,20 @@ DROP TABLE IF EXISTS `meeting_room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `meeting_room` (
-  `id` int NOT NULL,
-  `location` varchar(45) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `location` int NOT NULL,
   `start_time` datetime NOT NULL,
   `duration` datetime NOT NULL,
   `description` varchar(250) NOT NULL,
-  `reserved_by` varchar(45) NOT NULL,
+  `reserved_by` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `status` tinyint NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `location_idx` (`location`),
+  KEY `reserved_by_idx` (`reserved_by`),
+  CONSTRAINT `location` FOREIGN KEY (`location`) REFERENCES `meeting_locations` (`id`),
+  CONSTRAINT `reserved_by` FOREIGN KEY (`reserved_by`) REFERENCES `tenant_company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -340,16 +353,18 @@ DROP TABLE IF EXISTS `news_event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `news_event` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `event_name` varchar(250) NOT NULL,
   `event_description` text NOT NULL,
   `event_date` datetime NOT NULL,
   `event_expiry` datetime NOT NULL,
-  `event_organizer` varchar(250) NOT NULL,
+  `event_organizer` int NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `event_organizer_idx` (`event_organizer`),
+  CONSTRAINT `event_organizer` FOREIGN KEY (`event_organizer`) REFERENCES `tenant_company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -370,7 +385,7 @@ DROP TABLE IF EXISTS `parking_tags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `parking_tags` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(250) NOT NULL,
   `issued_to` int NOT NULL,
   `car_number` varchar(45) NOT NULL,
@@ -399,15 +414,18 @@ DROP TABLE IF EXISTS `petty_cash`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `petty_cash` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
   `amount` int NOT NULL,
-  `used_by` varchar(250) NOT NULL,
+  `used_by` int NOT NULL,
   `notes` text NOT NULL,
-  `requested_by` varchar(250) NOT NULL,
+  `requested_by` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `requested_by_idx` (`requested_by`),
+  KEY `used_by_idx` (`used_by`),
+  CONSTRAINT `used_by` FOREIGN KEY (`used_by`) REFERENCES `cards_tenant_workers` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -428,7 +446,7 @@ DROP TABLE IF EXISTS `tenant_company`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tenant_company` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `company_name` varchar(250) NOT NULL,
   `company_email` varchar(250) NOT NULL,
   `phone_number` varchar(45) NOT NULL,
@@ -437,7 +455,9 @@ CREATE TABLE `tenant_company` (
   `company_size` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `company_size_idx` (`company_size`),
+  CONSTRAINT `company_size` FOREIGN KEY (`company_size`) REFERENCES `company_size` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -473,7 +493,7 @@ CREATE TABLE `user_role` (
 
 LOCK TABLES `user_role` WRITE;
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (1,'admin',1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(3,'supervisor',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+INSERT INTO `user_role` VALUES (1,'admin',1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'co-admin',1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(3,'supervisor',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -497,7 +517,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `fk_roleId_idx` (`roleId`),
   CONSTRAINT `fk_roleId` FOREIGN KEY (`roleId`) REFERENCES `user_role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -506,9 +526,17 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'aqeel','mmaqeel@pk.ibm.com','12345','923335825548',1,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(3,'john doe','johndoe@example.com','12345','923335825548',3,1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+INSERT INTO `users` VALUES (1,'aqeel','mmaqeel@pk.ibm.com','12345','923335825548',1,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(3,'john doe','johndoe@example.com','12345','923335825548',3,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(5,'shahzaib','shahzaib@example.com','1234','923335825548',2,1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'e_portal'
+--
+
+--
+-- Dumping routines for database 'e_portal'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -519,4 +547,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-24 16:14:09
+-- Dump completed on 2024-07-06  2:22:26
