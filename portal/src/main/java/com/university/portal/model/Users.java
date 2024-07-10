@@ -25,12 +25,11 @@ public class Users {
     private String pwd;
     private String phone;
 
-    private String status;
+    private boolean status;
 
     private String created_at;
 
     private String updated_at;
-
-    private String roleId;
+    private int role_id;
 
 }
