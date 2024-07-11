@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `e_portal` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `e_portal`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
--- Host: localhost    Database: e_portal
+-- Host: 127.0.0.1    Database: e_portal
 -- ------------------------------------------------------
--- Server version	8.4.0
+-- Server version	8.0.38
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +36,7 @@ CREATE TABLE `assets` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `assets` (
 
 LOCK TABLES `assets` WRITE;
 /*!40000 ALTER TABLE `assets` DISABLE KEYS */;
-INSERT INTO `assets` VALUES (1,'land1','fiexed asset','islamabad','current asset','2024-03-23 00:00:00',23000,1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+INSERT INTO `assets` VALUES (1,'land1','fiexed asset','islamabad','current asset','2024-03-23 00:00:00',23000,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'land11','fiexed asset','rawlpinidi','current asset','2024-03-23 00:00:00',23000,1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `assets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -510,14 +510,14 @@ CREATE TABLE `users` (
   `email` varchar(45) NOT NULL,
   `pwd` varchar(45) NOT NULL,
   `phone` varchar(45) DEFAULT NULL,
-  `roleId` int NOT NULL,
+  `role_id` int NOT NULL,
   `status` tinyint NOT NULL DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_roleId_idx` (`roleId`),
-  CONSTRAINT `fk_roleId` FOREIGN KEY (`roleId`) REFERENCES `user_role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_roleId_idx` (`role_id`),
+  CONSTRAINT `fk_roleId` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -526,17 +526,9 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'aqeel','mmaqeel@pk.ibm.com','12345','923335825548',1,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(3,'john doe','johndoe@example.com','12345','923335825548',3,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(5,'shahzaib','shahzaib@example.com','1234','923335825548',2,1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+INSERT INTO `users` VALUES (1,'aqeel','mmaqeel@pk.ibm.com','12345','923335825548',1,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(3,'john doe','johndoe@example.com','12345','923335825548',3,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(5,'shahzaib','shahzaib@example.com','1234','923335825548',2,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(6,'test 5','example@gmial.com','abcd','003131',2,1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'e_portal'
---
-
---
--- Dumping routines for database 'e_portal'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -547,4 +539,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-06  2:22:26
+-- Dump completed on 2024-07-12  3:45:22
