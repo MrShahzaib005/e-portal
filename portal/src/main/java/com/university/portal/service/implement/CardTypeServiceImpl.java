@@ -2,6 +2,7 @@ package com.university.portal.service.implement;
 
 import com.university.portal.model.CardType;
 import com.university.portal.repository.CardTypeRepository;
+import com.university.portal.service.CardTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CardTypeServiceImpl implements CardTypeService{
+public class CardTypeServiceImpl implements CardTypeService {
 
     @Autowired
     CardTypeRepository cardTypeRepository;

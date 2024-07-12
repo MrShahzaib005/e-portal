@@ -1,8 +1,7 @@
 package com.university.portal.controller;
 
-import com.university.portal.model.Assets;
 import com.university.portal.model.CardType;
-import com.university.portal.service.implement.CardTypeService;
+import com.university.portal.service.CardTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

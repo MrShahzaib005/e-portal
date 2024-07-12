@@ -6,25 +6,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
-// ORM object relation modeling
 @Entity
 @Getter
 @Setter
-public class Assets {
+public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
-    private String type;
-    private String location;
-    private String asset_status;
-    private String purchase_date;
-    private int price;
+    private String role_name;
     private boolean status;
     private String created_at;
     private String updated_at;
-
-
 }
