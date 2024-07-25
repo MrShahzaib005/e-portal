@@ -15,4 +15,25 @@ public class UserRoleController {
 
     @GetMapping("/userRole")
     public List<UserRole> index() { return userRoleService.getAllUserRole();}
+
+    @GetMapping("/userRole/{id}")
+    public Optional<UserRole> getUserRole(@PathVariable Integer id){ return userRoleService.getUserRole(id);}
+
+    @PostMapping("/userRole/store")
+    public UserRole saveUserRole(@RequestBody UserRole userRole){ return userRoleService.create(userRole);}
+
+    @PostMapping("/userRole/update")
+    public UserRole updateUserRole(@RequestBody UserRole userRole){ return userRoleService.update(userRole);}
+
+    @DeleteMapping("/userRole/delete")
+    public ResponseEntity<Void> deleteAllEntities(){
+        userRoleService.deleteAllEntities();
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/userRole/delete/{id}")
+    public ResponseEntity<Void> deleteUserRole(@PathVariable Integer id) {
+        userRoleService.deleteUserRole(id);
+        return ResponseEntity.noContent().build();
+    }
 }
