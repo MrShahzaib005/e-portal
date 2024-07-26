@@ -2,8 +2,6 @@ package com.university.portal.service;
 //interface which contains methods.
 
 import com.university.portal.model.Assets;
-import com.university.portal.repository.AssetRepository;
-
 import java.util.List;
 import java.util.Optional;
 
