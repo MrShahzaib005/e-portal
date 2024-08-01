@@ -108,15 +108,15 @@ INSERT INTO `card_type` VALUES (8,'hanger','avtive','2024-03-23 00:00:00','2024-
 UNLOCK TABLES;
 
 --
--- Table structure for table `cleaningservice`
+-- Table structure for table `cleaning_service`
 --
 
-DROP TABLE IF EXISTS `cleaningservice`;
+DROP TABLE IF EXISTS `cleaning_service`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cleaningservice` (
+CREATE TABLE `cleaning_service` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `type(monthly,1 time special)` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
   `requested_by` int NOT NULL,
   `cost` int NOT NULL,
   `service_status` varchar(50) NOT NULL,
@@ -125,27 +125,28 @@ CREATE TABLE `cleaningservice` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `equested_by_idx` (`requested_by`),
-  CONSTRAINT `equested_by` FOREIGN KEY (`requested_by`) REFERENCES `tenantcompany` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `equested_by` FOREIGN KEY (`requested_by`) REFERENCES `tenant_company` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cleaningservice`
+-- Dumping data for table `cleaning_service`
 --
 
-LOCK TABLES `cleaningservice` WRITE;
-/*!40000 ALTER TABLE `cleaningservice` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cleaningservice` ENABLE KEYS */;
+LOCK TABLES `cleaning_service` WRITE;
+/*!40000 ALTER TABLE `cleaning_service` DISABLE KEYS */;
+INSERT INTO `cleaning_service` VALUES (1,'monthly',1,12000,'active',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+/*!40000 ALTER TABLE `cleaning_service` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `companysize`
+-- Table structure for table `company_size`
 --
 
-DROP TABLE IF EXISTS `companysize`;
+DROP TABLE IF EXISTS `company_size`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `companysize` (
+CREATE TABLE `company_size` (
   `id` int NOT NULL,
   `name` varchar(250) NOT NULL,
   `status` tinyint NOT NULL,
@@ -156,12 +157,13 @@ CREATE TABLE `companysize` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `companysize`
+-- Dumping data for table `company_size`
 --
 
-LOCK TABLES `companysize` WRITE;
-/*!40000 ALTER TABLE `companysize` DISABLE KEYS */;
-/*!40000 ALTER TABLE `companysize` ENABLE KEYS */;
+LOCK TABLES `company_size` WRITE;
+/*!40000 ALTER TABLE `company_size` DISABLE KEYS */;
+INSERT INTO `company_size` VALUES (1,'honda',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+/*!40000 ALTER TABLE `company_size` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -196,13 +198,13 @@ LOCK TABLES `complaints` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `eventrequest`
+-- Table structure for table `event_request`
 --
 
-DROP TABLE IF EXISTS `eventrequest`;
+DROP TABLE IF EXISTS `event_request`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `eventrequest` (
+CREATE TABLE `event_request` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(250) NOT NULL,
   `permit_decription` text NOT NULL,
@@ -212,27 +214,27 @@ CREATE TABLE `eventrequest` (
   `status` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   KEY `requested_by_idx` (`requested_by`),
-  CONSTRAINT `requested_by` FOREIGN KEY (`requested_by`) REFERENCES `tenantcompany` (`id`)
+  CONSTRAINT `requested_by` FOREIGN KEY (`requested_by`) REFERENCES `tenant_company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `eventrequest`
+-- Dumping data for table `event_request`
 --
 
-LOCK TABLES `eventrequest` WRITE;
-/*!40000 ALTER TABLE `eventrequest` DISABLE KEYS */;
-/*!40000 ALTER TABLE `eventrequest` ENABLE KEYS */;
+LOCK TABLES `event_request` WRITE;
+/*!40000 ALTER TABLE `event_request` DISABLE KEYS */;
+/*!40000 ALTER TABLE `event_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `gatepass`
+-- Table structure for table `gate_pass`
 --
 
-DROP TABLE IF EXISTS `gatepass`;
+DROP TABLE IF EXISTS `gate_pass`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `gatepass` (
+CREATE TABLE `gate_pass` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `issued_to` varchar(250) NOT NULL,
@@ -247,12 +249,12 @@ CREATE TABLE `gatepass` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `gatepass`
+-- Dumping data for table `gate_pass`
 --
 
-LOCK TABLES `gatepass` WRITE;
-/*!40000 ALTER TABLE `gatepass` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gatepass` ENABLE KEYS */;
+LOCK TABLES `gate_pass` WRITE;
+/*!40000 ALTER TABLE `gate_pass` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gate_pass` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -287,13 +289,13 @@ LOCK TABLES `inventory` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `meetinglocation`
+-- Table structure for table `meeting_location`
 --
 
-DROP TABLE IF EXISTS `meetinglocation`;
+DROP TABLE IF EXISTS `meeting_location`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `meetinglocation` (
+CREATE TABLE `meeting_location` (
   `id` int NOT NULL,
   `name` varchar(45) NOT NULL,
   `status` tinyint NOT NULL,
@@ -304,22 +306,22 @@ CREATE TABLE `meetinglocation` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `meetinglocation`
+-- Dumping data for table `meeting_location`
 --
 
-LOCK TABLES `meetinglocation` WRITE;
-/*!40000 ALTER TABLE `meetinglocation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `meetinglocation` ENABLE KEYS */;
+LOCK TABLES `meeting_location` WRITE;
+/*!40000 ALTER TABLE `meeting_location` DISABLE KEYS */;
+/*!40000 ALTER TABLE `meeting_location` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `meetingroom`
+-- Table structure for table `meeting_room`
 --
 
-DROP TABLE IF EXISTS `meetingroom`;
+DROP TABLE IF EXISTS `meeting_room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `meetingroom` (
+CREATE TABLE `meeting_room` (
   `id` int NOT NULL AUTO_INCREMENT,
   `location` int NOT NULL,
   `start_time` datetime NOT NULL,
@@ -332,28 +334,28 @@ CREATE TABLE `meetingroom` (
   PRIMARY KEY (`id`),
   KEY `location_idx` (`location`),
   KEY `reserved_by_idx` (`reserved_by`),
-  CONSTRAINT `location` FOREIGN KEY (`location`) REFERENCES `meetinglocation` (`id`),
-  CONSTRAINT `reserved_by` FOREIGN KEY (`reserved_by`) REFERENCES `tenantcompany` (`id`)
+  CONSTRAINT `location` FOREIGN KEY (`location`) REFERENCES `meeting_location` (`id`),
+  CONSTRAINT `reserved_by` FOREIGN KEY (`reserved_by`) REFERENCES `tenant_company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `meetingroom`
+-- Dumping data for table `meeting_room`
 --
 
-LOCK TABLES `meetingroom` WRITE;
-/*!40000 ALTER TABLE `meetingroom` DISABLE KEYS */;
-/*!40000 ALTER TABLE `meetingroom` ENABLE KEYS */;
+LOCK TABLES `meeting_room` WRITE;
+/*!40000 ALTER TABLE `meeting_room` DISABLE KEYS */;
+/*!40000 ALTER TABLE `meeting_room` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `newsevent`
+-- Table structure for table `news_event`
 --
 
-DROP TABLE IF EXISTS `newsevent`;
+DROP TABLE IF EXISTS `news_event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `newsevent` (
+CREATE TABLE `news_event` (
   `id` int NOT NULL AUTO_INCREMENT,
   `event_name` varchar(250) NOT NULL,
   `event_description` text NOT NULL,
@@ -365,27 +367,27 @@ CREATE TABLE `newsevent` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `event_organizer_idx` (`event_organizer`),
-  CONSTRAINT `event_organizer` FOREIGN KEY (`event_organizer`) REFERENCES `tenantcompany` (`id`)
+  CONSTRAINT `event_organizer` FOREIGN KEY (`event_organizer`) REFERENCES `tenant_company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `newsevent`
+-- Dumping data for table `news_event`
 --
 
-LOCK TABLES `newsevent` WRITE;
-/*!40000 ALTER TABLE `newsevent` DISABLE KEYS */;
-/*!40000 ALTER TABLE `newsevent` ENABLE KEYS */;
+LOCK TABLES `news_event` WRITE;
+/*!40000 ALTER TABLE `news_event` DISABLE KEYS */;
+/*!40000 ALTER TABLE `news_event` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `parkingtag`
+-- Table structure for table `parking_tag`
 --
 
-DROP TABLE IF EXISTS `parkingtag`;
+DROP TABLE IF EXISTS `parking_tag`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `parkingtag` (
+CREATE TABLE `parking_tag` (
   `id` int NOT NULL AUTO_INCREMENT,
   `tag_name` varchar(250) NOT NULL,
   `issued_to` int NOT NULL,
@@ -401,12 +403,12 @@ CREATE TABLE `parkingtag` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `parkingtag`
+-- Dumping data for table `parking_tag`
 --
 
-LOCK TABLES `parkingtag` WRITE;
-/*!40000 ALTER TABLE `parkingtag` DISABLE KEYS */;
-/*!40000 ALTER TABLE `parkingtag` ENABLE KEYS */;
+LOCK TABLES `parking_tag` WRITE;
+/*!40000 ALTER TABLE `parking_tag` DISABLE KEYS */;
+/*!40000 ALTER TABLE `parking_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -443,13 +445,13 @@ INSERT INTO `petty_cash` VALUES (2,'soda',24,1,'to buy soda',1,'2024-03-23 00:00
 UNLOCK TABLES;
 
 --
--- Table structure for table `tenantcompany`
+-- Table structure for table `tenant_company`
 --
 
-DROP TABLE IF EXISTS `tenantcompany`;
+DROP TABLE IF EXISTS `tenant_company`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tenantcompany` (
+CREATE TABLE `tenant_company` (
   `id` int NOT NULL AUTO_INCREMENT,
   `company_name` varchar(250) NOT NULL,
   `company_email` varchar(250) NOT NULL,
@@ -461,17 +463,18 @@ CREATE TABLE `tenantcompany` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `company_size_idx` (`company_size`),
-  CONSTRAINT `company_size` FOREIGN KEY (`company_size`) REFERENCES `companysize` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `company_size` FOREIGN KEY (`company_size`) REFERENCES `company_size` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tenantcompany`
+-- Dumping data for table `tenant_company`
 --
 
-LOCK TABLES `tenantcompany` WRITE;
-/*!40000 ALTER TABLE `tenantcompany` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tenantcompany` ENABLE KEYS */;
+LOCK TABLES `tenant_company` WRITE;
+/*!40000 ALTER TABLE `tenant_company` DISABLE KEYS */;
+INSERT INTO `tenant_company` VALUES (1,'honda','abc@gmail.com','55555','ahmed','abc@gmail',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+/*!40000 ALTER TABLE `tenant_company` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -541,4 +544,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-26 19:13:39
+-- Dump completed on 2024-08-02  0:31:24
