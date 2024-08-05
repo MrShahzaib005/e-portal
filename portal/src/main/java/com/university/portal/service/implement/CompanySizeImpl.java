@@ -19,4 +19,9 @@ public class CompanySizeImpl implements CompanySizeService {
     public List<CompanySize> getAllCompanySize() {
         return companySizeRepository.findAll();
     }
+
+    @Override
+    public Optional<CompanySize> getCompanySize(Integer companysizeid) {
+        return companySizeRepository.findById(companysizeid);
+    }
 }

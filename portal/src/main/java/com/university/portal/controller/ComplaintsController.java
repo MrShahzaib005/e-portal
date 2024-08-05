@@ -16,5 +16,6 @@ public class ComplaintsController {
     ComplaintsService complaintsService;
 
     @GetMapping("/complaints")
-    public List<Complaints> index(){ return complaintsService.getAllComplaints();}
+    public List<Complaints> index() { return complaintsService.getAllComplaints(); }
+    
 }

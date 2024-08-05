@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface CompanySizeService {
     public List<CompanySize> getAllCompanySize();
+
+     public Optional<CompanySize> getCompanySize(Integer companysizeid);
 }

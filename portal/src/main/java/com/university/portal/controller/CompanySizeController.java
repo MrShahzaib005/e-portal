@@ -4,6 +4,7 @@ import com.university.portal.model.CompanySize;
 import com.university.portal.service.CompanySizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,5 +17,9 @@ public class CompanySizeController {
     CompanySizeService companySizeService;
 
     @GetMapping("/companysize")
-    public List<CompanySize> index(){ return companySizeService.getAllCompanySize();}
+    public List<CompanySize> index(){ return companySizeService.getAllCompanySize(); }
+
+    @GetMapping("/companysize/{id}")
+    public Optional<CompanySize> getCompanySize(@PathVariable Integer id)
+    { return companySizeService.getCompanySize(id); }
 }

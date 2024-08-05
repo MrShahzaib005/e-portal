@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface CleaningServiceService {
     public List<CleaningService> getAllCleaningService();
+
+    public Optional<CleaningService> getCleaningService(Integer cleaningserviceid);
 }

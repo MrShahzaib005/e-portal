@@ -5,6 +5,9 @@ import com.university.portal.service.CardTenWorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 public class CardTenWorkerController {
 
@@ -12,5 +15,13 @@ public class CardTenWorkerController {
     CardTenWorkerService cardTenWorkerService;
 
     @PostMapping("/cardtenworker/store")
-    public CardTenWorker saveDetail(@RequestBody CardTenWorker cardTenWorker) {return cardTenWorkerService.save(cardTenWorker);}
+    public CardTenWorker saveDetail(@RequestBody CardTenWorker cardTenWorker)
+    { return cardTenWorkerService.save(cardTenWorker);}
+
+    @GetMapping("/cardtenworker")
+    public List<CardTenWorker> index() { return cardTenWorkerService.getAllCarTenWorker(); }
+
+    @GetMapping("/cardtenworker/{id}")
+    public Optional<CardTenWorker> getCardTenWorker(@PathVariable Integer id)
+    { return cardTenWorkerService.getCardTenWorker(id); }
 }

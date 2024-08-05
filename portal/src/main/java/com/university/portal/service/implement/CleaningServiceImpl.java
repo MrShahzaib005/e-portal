@@ -19,4 +19,9 @@ public class CleaningServiceImpl implements CleaningServiceService {
     public List<CleaningService> getAllCleaningService() {
         return cleaningServiceRepository.findAll();
     }
+
+    @Override
+    public Optional<CleaningService> getCleaningService(Integer cleaningserviceid) {
+        return cleaningServiceRepository.findById(cleaningserviceid);
+    }
 }
