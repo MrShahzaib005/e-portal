@@ -4,6 +4,7 @@ import com.university.portal.model.Inventory;
 import com.university.portal.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,5 +17,8 @@ public class InventoryController {
     InventoryService inventoryService;
 
     @GetMapping("/inventory")
-    public List<Inventory> index(){ return inventoryService.getAllInventory();}
+    public List<Inventory> index() { return inventoryService.getAllInventory(); }
+
+    @GetMapping("/inventory/{id}")
+    public Optional<Inventory> getInventory(@PathVariable Integer id) { return inventoryService.getInventory(id); }
 }

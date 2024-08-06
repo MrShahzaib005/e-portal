@@ -16,5 +16,11 @@ public class PettyCashController {
     PettyCashService pettyCashService;
 
     @PostMapping("/pettycash/store")
-    public PettyCash savepettycash(@RequestBody PettyCash pettyCash) { return pettyCashService.create(pettyCash);}
+    public PettyCash savepettycash(@RequestBody PettyCash pettyCash) { return pettyCashService.create(pettyCash); }
+
+    @GetMapping("/pettycash")
+    public List<PettyCash> index() { return pettyCashService.getAllPettyCash(); }
+
+    @GetMapping("/pettycash/{id}")
+    public Optional<PettyCash> getPettyCash(@PathVariable Integer id) { return pettyCashService.getPettyCash(id); }
 }

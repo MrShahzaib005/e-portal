@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface MeetingLocationService {
     public List<MeetingLocation> getAllMeetingLocation();
+
+    public Optional<MeetingLocation> getMeetingLocation(Integer meetinglocationid);
 }

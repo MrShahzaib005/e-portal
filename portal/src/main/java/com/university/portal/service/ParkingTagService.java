@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface ParkingTagService {
     public List<ParkingTag> getAllParkingTag();
+
+    public Optional<ParkingTag> getParkingTag(Integer parkingtagid);
 }

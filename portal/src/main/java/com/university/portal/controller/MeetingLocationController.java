@@ -6,6 +6,7 @@ import com.university.portal.service.MeetingLocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.ListQueryByExampleExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,5 +18,8 @@ public class MeetingLocationController {
     MeetingLocationService meetingLocationService;
 
     @GetMapping("/meetinglocation")
-    public List<MeetingLocation> index(){ return meetingLocationService.getAllMeetingLocation();}
+    public List<MeetingLocation> index() { return meetingLocationService.getAllMeetingLocation(); }
+
+    @GetMapping("/meetinglocation/{id}")
+    public Optional<MeetingLocation> getMeetingLocation(@PathVariable Integer id) { return meetingLocationService.getMeetingLocation(id); }
 }

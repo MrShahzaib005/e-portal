@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface NewsEventService {
     public List<NewsEvent> getAllNewsEvent();
+
+    public Optional<NewsEvent> getNewsEvent(Integer newseventid);
 }

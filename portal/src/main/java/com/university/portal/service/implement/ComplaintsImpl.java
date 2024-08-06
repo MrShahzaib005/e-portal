@@ -19,4 +19,14 @@ public class ComplaintsImpl implements ComplaintsService {
     public List<Complaints> getAllComplaints() {
         return complaintsRepository.findAll();
     }
+
+    @Override
+    public Optional<Complaints> getComplaints(Integer complaintid) {
+        return complaintsRepository.findById(complaintid);
+    }
+
+    @Override
+    public Complaints create(Complaints complaints) {
+        return complaintsRepository.save(complaints);
+    }
 }

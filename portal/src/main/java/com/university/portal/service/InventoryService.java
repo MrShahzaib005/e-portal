@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface InventoryService {
     public List<Inventory> getAllInventory();
+
+    public Optional<Inventory> getInventory(Integer inventoryid);
 }

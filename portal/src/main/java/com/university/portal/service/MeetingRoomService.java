@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface MeetingRoomService {
     public List<MeetingRoom> getAllMeetingRoom();
+
+    public Optional<MeetingRoom> getMeetingRoom(Integer meetingroomid);
 }

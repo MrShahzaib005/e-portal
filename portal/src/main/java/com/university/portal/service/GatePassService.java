@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface GatePassService {
     public List<GatePass> getAllGatePass();
+
+    public Optional<GatePass> getGatePass(Integer gatepassid);
 }

@@ -6,4 +6,8 @@ import java.util.Optional;
 
 public interface PettyCashService {
     public PettyCash create(PettyCash pettyCash);
+
+    public List<PettyCash> getAllPettyCash();
+
+    public Optional<PettyCash> getPettyCash(Integer pettycashid);
 }

@@ -18,4 +18,9 @@ public class ParkingTagImpl implements ParkingTagService {
     public List<ParkingTag> getAllParkingTag() {
         return parkingTagRepository.findAll();
     }
+
+    @Override
+    public Optional<ParkingTag> getParkingTag(Integer parkingtagid) {
+        return parkingTagRepository.findById(parkingtagid);
+    }
 }

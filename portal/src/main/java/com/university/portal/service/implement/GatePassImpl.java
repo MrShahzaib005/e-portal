@@ -19,4 +19,9 @@ public class GatePassImpl implements GatePassService {
     public List<GatePass> getAllGatePass() {
         return gatePassRepository.findAll();
     }
+
+    @Override
+    public Optional<GatePass> getGatePass(Integer gatepassid) {
+        return gatePassRepository.findById(gatepassid);
+    }
 }

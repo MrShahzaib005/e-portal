@@ -24,4 +24,9 @@ public class CleaningServiceImpl implements CleaningServiceService {
     public Optional<CleaningService> getCleaningService(Integer cleaningserviceid) {
         return cleaningServiceRepository.findById(cleaningserviceid);
     }
+
+    @Override
+    public CleaningService create(CleaningService cleaningservice) {
+        return cleaningServiceRepository.save(cleaningservice);
+    }
 }

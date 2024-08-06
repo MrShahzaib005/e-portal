@@ -24,4 +24,9 @@ public class CompanySizeImpl implements CompanySizeService {
     public Optional<CompanySize> getCompanySize(Integer companysizeid) {
         return companySizeRepository.findById(companysizeid);
     }
+
+    @Override
+    public CompanySize create(CompanySize companySize) {
+        return companySizeRepository.save(companySize);
+    }
 }

@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 //JRepository base class which links to the database.
 public interface AssetRepository extends JpaRepository<Assets, Integer> {
 
+
+
 }

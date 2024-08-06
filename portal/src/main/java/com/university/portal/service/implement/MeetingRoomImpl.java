@@ -18,4 +18,9 @@ public class MeetingRoomImpl implements MeetingRoomService {
     public List<MeetingRoom> getAllMeetingRoom() {
         return meetingRoomRepository.findAll();
     }
+
+    @Override
+    public Optional<MeetingRoom> getMeetingRoom(Integer meetingroomid) {
+        return meetingRoomRepository.findById(meetingroomid);
+    }
 }

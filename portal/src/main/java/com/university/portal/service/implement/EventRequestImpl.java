@@ -19,4 +19,14 @@ public class EventRequestImpl implements EventRequestService {
     public List<EventRequest> getAllEventRequest() {
         return eventRequestRepository.findAll();
     }
+
+    @Override
+    public Optional<EventRequest> getEventRequest(Integer eventrequestid) {
+        return eventRequestRepository.findById(eventrequestid);
+    }
+
+    @Override
+    public EventRequest create(EventRequest eventRequest) {
+        return eventRequestRepository.save(eventRequest);
+    }
 }

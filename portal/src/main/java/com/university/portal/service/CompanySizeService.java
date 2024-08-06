@@ -9,4 +9,6 @@ public interface CompanySizeService {
     public List<CompanySize> getAllCompanySize();
 
      public Optional<CompanySize> getCompanySize(Integer companysizeid);
+
+    public CompanySize create(CompanySize companySize);
 }

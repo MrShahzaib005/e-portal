@@ -19,4 +19,14 @@ public class PettyCashImpl implements PettyCashService {
     public PettyCash create(PettyCash pettyCash) {
         return pettyCashRepository.save(pettyCash);
     }
+
+    @Override
+    public List<PettyCash> getAllPettyCash() {
+        return pettyCashRepository.findAll();
+    }
+
+    @Override
+    public Optional<PettyCash> getPettyCash(Integer pettycashid) {
+        return pettyCashRepository.findById(pettycashid);
+    }
 }

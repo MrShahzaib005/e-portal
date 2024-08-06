@@ -18,4 +18,9 @@ public class NewsEventImpl implements NewsEventService {
     public List<NewsEvent> getAllNewsEvent() {
         return newsEventRepository.findAll();
     }
+
+    @Override
+    public Optional<NewsEvent> getNewsEvent(Integer newseventid) {
+        return newsEventRepository.findById(newseventid);
+    }
 }
