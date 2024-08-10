@@ -24,4 +24,6 @@ public class CardTenWorkerController {
     @GetMapping("/cardtenworker/{id}")
     public Optional<CardTenWorker> getCardTenWorker(@PathVariable Integer id)
     { return cardTenWorkerService.getCardTenWorker(id); }
+
+    
 }
