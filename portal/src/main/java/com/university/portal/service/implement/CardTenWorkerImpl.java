@@ -29,4 +29,10 @@ public class CardTenWorkerImpl implements CardTenWorkerService {
     public Optional<CardTenWorker> getCardTenWorker(Integer cardtenworkerid) {
         return cardTenWorkerRepository.findById(cardtenworkerid);
     }
+
+    @Override
+    public CardTenWorker update(CardTenWorker cardTenWorker) {
+        return cardTenWorkerRepository.save(cardTenWorker);
+    }
+    
 }

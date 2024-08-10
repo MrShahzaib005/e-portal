@@ -11,4 +11,7 @@ public interface CardTenWorkerService {
     public List<CardTenWorker> getAllCarTenWorker();
 
     public Optional<CardTenWorker> getCardTenWorker(Integer cardtenworkerid);
+
+    public CardTenWorker update(CardTenWorker cardTenWorker);
+
 }

@@ -3,6 +3,7 @@ package com.university.portal.controller;
 import com.university.portal.model.CardTenWorker;
 import com.university.portal.service.CardTenWorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,10 +19,16 @@ public class CardTenWorkerController {
     public CardTenWorker saveDetail(@RequestBody CardTenWorker cardTenWorker)
     { return cardTenWorkerService.save(cardTenWorker);}
 
+    @PostMapping("cardtenworker/update")
+    public CardTenWorker updateDetail(@RequestBody CardTenWorker cardTenWorker)
+    { return cardTenWorkerService.update(cardTenWorker); }
+
     @GetMapping("/cardtenworker")
     public List<CardTenWorker> index() { return cardTenWorkerService.getAllCarTenWorker(); }
 
     @GetMapping("/cardtenworker/{id}")
     public Optional<CardTenWorker> getCardTenWorker(@PathVariable Integer id)
     { return cardTenWorkerService.getCardTenWorker(id); }
+
+
 }
