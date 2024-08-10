@@ -36,7 +36,7 @@ CREATE TABLE `assets` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `assets` (
 
 LOCK TABLES `assets` WRITE;
 /*!40000 ALTER TABLE `assets` DISABLE KEYS */;
+INSERT INTO `assets` VALUES (6,'land12','fiexed asset','rawlpinidi','current asset','2024-03-23 00:00:00',23000,1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `assets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +67,7 @@ CREATE TABLE `card_ten_worker` (
   `updated_at` datetime NOT NULL,
   `status` tinyint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +76,7 @@ CREATE TABLE `card_ten_worker` (
 
 LOCK TABLES `card_ten_worker` WRITE;
 /*!40000 ALTER TABLE `card_ten_worker` DISABLE KEYS */;
-INSERT INTO `card_ten_worker` VALUES (1,'sweaper',1,'2024-03-23 00:00:00','2024-03-23 00:00:00','by me','2024-03-23 00:00:00','2024-03-23 00:00:00',1),(2,'test1',2,'2024-03-23 00:00:00','2024-03-23 00:00:00','shahzaib','2024-03-23 00:00:00','2024-03-23 00:00:00',0);
+INSERT INTO `card_ten_worker` VALUES (1,'sweaper',1,'2024-03-23 00:00:00','2024-03-23 00:00:00','by me','2024-03-23 00:00:00','2024-03-23 00:00:00',1),(2,'test4',2,'2024-03-23 00:00:00','2024-03-23 00:00:00','haseeb','2024-03-23 00:00:00','2024-03-23 00:00:00',0),(3,'test1',2,'2024-03-23 00:00:00','2024-03-23 00:00:00','shahzaib','2024-03-23 00:00:00','2024-03-23 00:00:00',0);
 /*!40000 ALTER TABLE `card_ten_worker` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +127,7 @@ CREATE TABLE `cleaning_service` (
   PRIMARY KEY (`id`),
   KEY `equested_by_idx` (`requested_by`),
   CONSTRAINT `equested_by` FOREIGN KEY (`requested_by`) REFERENCES `tenant_company` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +136,7 @@ CREATE TABLE `cleaning_service` (
 
 LOCK TABLES `cleaning_service` WRITE;
 /*!40000 ALTER TABLE `cleaning_service` DISABLE KEYS */;
-INSERT INTO `cleaning_service` VALUES (1,'monthly',1,12000,'active',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+INSERT INTO `cleaning_service` VALUES (1,'monthly',1,12000,'active',1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'monthly',1,13400,'active',0,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(3,'weekly',1,3400,'current',0,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `cleaning_service` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,13 +148,13 @@ DROP TABLE IF EXISTS `company_size`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `company_size` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `status` tinyint NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +163,7 @@ CREATE TABLE `company_size` (
 
 LOCK TABLES `company_size` WRITE;
 /*!40000 ALTER TABLE `company_size` DISABLE KEYS */;
-INSERT INTO `company_size` VALUES (1,'honda',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+INSERT INTO `company_size` VALUES (1,'honda',1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'toyota',0,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(3,'cruiser',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `company_size` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,13 +180,13 @@ CREATE TABLE `complaints` (
   `description` text NOT NULL,
   `type` varchar(250) NOT NULL,
   `issue_date` datetime NOT NULL,
-  `complaint_status` varchar(50) NOT NULL,
+  `complaint_status` tinyint NOT NULL,
   `status` tinyint NOT NULL,
   `assign_to` varchar(45) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,6 +195,7 @@ CREATE TABLE `complaints` (
 
 LOCK TABLES `complaints` WRITE;
 /*!40000 ALTER TABLE `complaints` DISABLE KEYS */;
+INSERT INTO `complaints` VALUES (1,'mishap','broken glass','test1','2024-03-23 00:00:00',0,1,'admin','2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'test','furniture','tet2','2024-03-23 00:00:00',1,1,'co admin','2024-03-23 00:00:00','2024-03-23 00:00:00'),(3,'test','car','test','2024-03-23 00:00:00',1,0,'co_admin','2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `complaints` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +209,7 @@ DROP TABLE IF EXISTS `event_request`;
 CREATE TABLE `event_request` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(250) NOT NULL,
-  `permit_decription` text NOT NULL,
+  `permit_description` text NOT NULL,
   `requested_by` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -215,7 +217,7 @@ CREATE TABLE `event_request` (
   PRIMARY KEY (`id`),
   KEY `requested_by_idx` (`requested_by`),
   CONSTRAINT `requested_by` FOREIGN KEY (`requested_by`) REFERENCES `tenant_company` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,6 +226,7 @@ CREATE TABLE `event_request` (
 
 LOCK TABLES `event_request` WRITE;
 /*!40000 ALTER TABLE `event_request` DISABLE KEYS */;
+INSERT INTO `event_request` VALUES (1,'webinar','Description on AI prompts',1,'2024-03-23 00:00:00','2024-03-23 00:00:00',1),(2,'host ','Description on Block Chian',1,'2024-03-23 00:00:00','2024-03-23 00:00:00',0),(3,'party','Description on CSS',1,'2024-03-23 00:00:00','2024-03-23 00:00:00',0);
 /*!40000 ALTER TABLE `event_request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,7 +248,7 @@ CREATE TABLE `gate_pass` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,6 +257,7 @@ CREATE TABLE `gate_pass` (
 
 LOCK TABLES `gate_pass` WRITE;
 /*!40000 ALTER TABLE `gate_pass` DISABLE KEYS */;
+INSERT INTO `gate_pass` VALUES (1,'ahmed','jamil',1,'2024-03-23 00:00:00','2024-03-23 00:00:00',1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'jamil','shafay',1,'2024-03-23 00:00:00','2024-03-23 00:00:00',0,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `gate_pass` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,7 +280,7 @@ CREATE TABLE `inventory` (
   `updated_at` datetime NOT NULL,
   `status` tinyint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,6 +289,7 @@ CREATE TABLE `inventory` (
 
 LOCK TABLES `inventory` WRITE;
 /*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
+INSERT INTO `inventory` VALUES (2,'pepsi','bewarage',20,180,15,1,'2024-03-23 00:00:00','2024-03-23 00:00:00',1),(3,'FANTA','drink',45,200,10,1,'2024-03-23 00:00:00','2024-03-23 00:00:00',0);
 /*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,6 +316,7 @@ CREATE TABLE `meeting_location` (
 
 LOCK TABLES `meeting_location` WRITE;
 /*!40000 ALTER TABLE `meeting_location` DISABLE KEYS */;
+INSERT INTO `meeting_location` VALUES (1,'main hall',1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'staduim',0,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `meeting_location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -336,7 +342,7 @@ CREATE TABLE `meeting_room` (
   KEY `reserved_by_idx` (`reserved_by`),
   CONSTRAINT `location` FOREIGN KEY (`location`) REFERENCES `meeting_location` (`id`),
   CONSTRAINT `reserved_by` FOREIGN KEY (`reserved_by`) REFERENCES `tenant_company` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -345,6 +351,7 @@ CREATE TABLE `meeting_room` (
 
 LOCK TABLES `meeting_room` WRITE;
 /*!40000 ALTER TABLE `meeting_room` DISABLE KEYS */;
+INSERT INTO `meeting_room` VALUES (1,1,'2024-03-23 00:00:00','2024-03-23 00:00:00','TestMeeting',1,'2024-03-23 00:00:00','2024-03-23 00:00:00',1),(2,2,'2024-03-23 00:00:00','2024-03-23 00:00:00','betameeting',1,'2024-03-23 00:00:00','2024-03-23 00:00:00',0);
 /*!40000 ALTER TABLE `meeting_room` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -357,18 +364,18 @@ DROP TABLE IF EXISTS `news_event`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `news_event` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `event_name` varchar(250) NOT NULL,
-  `event_description` text NOT NULL,
-  `event_date` datetime NOT NULL,
-  `event_expiry` datetime NOT NULL,
-  `event_organizer` int NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `description` text NOT NULL,
+  `date` datetime NOT NULL,
+  `expiry` datetime NOT NULL,
+  `organizer` int NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `event_organizer_idx` (`event_organizer`),
-  CONSTRAINT `event_organizer` FOREIGN KEY (`event_organizer`) REFERENCES `tenant_company` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `event_organizer_idx` (`organizer`),
+  CONSTRAINT `event_organizer` FOREIGN KEY (`organizer`) REFERENCES `tenant_company` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,6 +384,7 @@ CREATE TABLE `news_event` (
 
 LOCK TABLES `news_event` WRITE;
 /*!40000 ALTER TABLE `news_event` DISABLE KEYS */;
+INSERT INTO `news_event` VALUES (1,'webinar','AI','2024-03-23 00:00:00','2024-03-23 00:00:00',1,1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'test','SE','2024-03-23 00:00:00','2024-03-23 00:00:00',1,0,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `news_event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,7 +397,7 @@ DROP TABLE IF EXISTS `parking_tag`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `parking_tag` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tag_name` varchar(250) NOT NULL,
+  `name` varchar(250) NOT NULL,
   `issued_to` int NOT NULL,
   `car_number` varchar(45) NOT NULL,
   `status` tinyint(1) NOT NULL,
@@ -399,7 +407,7 @@ CREATE TABLE `parking_tag` (
   PRIMARY KEY (`id`),
   KEY `issued_to_idx` (`issued_to`),
   CONSTRAINT `issued_to` FOREIGN KEY (`issued_to`) REFERENCES `card_ten_worker` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -408,6 +416,7 @@ CREATE TABLE `parking_tag` (
 
 LOCK TABLES `parking_tag` WRITE;
 /*!40000 ALTER TABLE `parking_tag` DISABLE KEYS */;
+INSERT INTO `parking_tag` VALUES (1,'ahmed',1,'215',1,'2024-03-23 00:00:00','2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'ali',1,'457',0,'2024-03-23 00:00:00','2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `parking_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -461,10 +470,8 @@ CREATE TABLE `tenant_company` (
   `company_size` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `company_size_idx` (`company_size`),
-  CONSTRAINT `company_size` FOREIGN KEY (`company_size`) REFERENCES `company_size` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -473,7 +480,7 @@ CREATE TABLE `tenant_company` (
 
 LOCK TABLES `tenant_company` WRITE;
 /*!40000 ALTER TABLE `tenant_company` DISABLE KEYS */;
-INSERT INTO `tenant_company` VALUES (1,'honda','abc@gmail.com','55555','ahmed','abc@gmail',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
+INSERT INTO `tenant_company` VALUES (1,'honda','abc@gmail.com','55555','ahmed','abc@gmail',1,'2024-03-23 00:00:00','2024-03-23 00:00:00'),(2,'toyota','abc@gamil.com','789215','ali','abc@gmail.com',1,'2024-03-23 00:00:00','2024-03-23 00:00:00');
 /*!40000 ALTER TABLE `tenant_company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -544,4 +551,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-02  0:31:24
+-- Dump completed on 2024-08-10 20:28:23
