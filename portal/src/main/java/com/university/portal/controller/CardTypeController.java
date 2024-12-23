@@ -16,12 +16,12 @@ public class CardTypeController {
     CardTypeService cardTypeService;
 
     @GetMapping("/cardType")
-    public List<CardType> index(){
+    public List<CardType> index() {
         return cardTypeService.getAllCardType();
     }
 
     @PostMapping("/cardType/store")
-    public CardType saveCardType(@RequestBody CardType cardType){
+    public CardType saveCardType(@RequestBody CardType cardType) {
         return cardTypeService.create(cardType);
     }
 
@@ -30,12 +30,20 @@ public class CardTypeController {
         cardTypeService.deleteCardType(id);
         return ResponseEntity.noContent().build();}
 
+    @DeleteMapping("/cardtype/delete")
+    public ResponseEntity<Void> deleteAllEntities() {
+        cardTypeService.deleteAllEntities();
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping("/cardType/update")
-    public CardType updatecardType(@RequestBody CardType cardType){
+    public CardType updatecardType(@RequestBody CardType cardType) {
+
         return cardTypeService.update(cardType);
     }
 
     @GetMapping("/cardType/{id}")
-    public Optional<CardType> getCardType(@PathVariable Integer id){return cardTypeService.getCardType(id);}
+    public Optional<CardType> getCardType(@PathVariable Integer id) {
+        return cardTypeService.getCardType(id); }
 
 }

@@ -37,4 +37,9 @@ public class CardTypeServiceImpl implements CardTypeService {
     public Optional<CardType> getCardType(Integer cardTypeId) {
         return cardTypeRepository.findById(cardTypeId);
     }
+
+    @Override
+    public void deleteAllEntities() {
+        cardTypeRepository.deleteAll();
+    }
 }

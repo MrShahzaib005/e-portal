@@ -20,12 +20,13 @@ public class AssetsController {
     }
 
     @GetMapping("/assets/{id}")
-    public Optional<Assets> getAsset(@PathVariable Integer id){
+    public Optional<Assets> getAsset(@PathVariable Integer id) {
         return assetsService.getAsset(id);
     }
 
     @PostMapping("/assets/store")
-    public Assets saveassets(@RequestBody Assets assets){
+    public Assets saveassets(@RequestBody Assets assets) {
+
         return assetsService.create(assets);
     }
 
@@ -36,7 +37,7 @@ public class AssetsController {
     }
 
     @PostMapping("/assets/update")
-    public Assets updateassets(@RequestBody Assets assets){
+    public Assets updateassets(@RequestBody Assets assets) {
         return assetsService.update(assets);
     }
 

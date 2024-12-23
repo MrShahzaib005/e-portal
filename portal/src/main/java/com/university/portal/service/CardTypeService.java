@@ -16,4 +16,6 @@ public interface CardTypeService {
     public CardType update(CardType cardType);
 
     public Optional<CardType> getCardType(Integer cardTypeId);
+
+    public void deleteAllEntities();
 }

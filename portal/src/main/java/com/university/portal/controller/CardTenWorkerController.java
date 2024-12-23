@@ -16,19 +16,20 @@ public class CardTenWorkerController {
     CardTenWorkerService cardTenWorkerService;
 
     @PostMapping("/cardtenworker/store")
-    public CardTenWorker saveDetail(@RequestBody CardTenWorker cardTenWorker)
-    { return cardTenWorkerService.save(cardTenWorker);}
+    public CardTenWorker saveDetail(@RequestBody CardTenWorker cardTenWorker) {
+        return cardTenWorkerService.save(cardTenWorker); }
 
     @PostMapping("cardtenworker/update")
-    public CardTenWorker updateDetail(@RequestBody CardTenWorker cardTenWorker)
-    { return cardTenWorkerService.update(cardTenWorker); }
+    public CardTenWorker updateDetail(@RequestBody CardTenWorker cardTenWorker) {
+        return cardTenWorkerService.update(cardTenWorker); }
 
     @GetMapping("/cardtenworker")
-    public List<CardTenWorker> index() { return cardTenWorkerService.getAllCarTenWorker(); }
+    public List<CardTenWorker> index() {
+        return cardTenWorkerService.getAllCarTenWorker(); }
 
     @GetMapping("/cardtenworker/{id}")
-    public Optional<CardTenWorker> getCardTenWorker(@PathVariable Integer id)
-    { return cardTenWorkerService.getCardTenWorker(id); }
+    public Optional<CardTenWorker> getCardTenWorker(@PathVariable Integer id) {
+        return cardTenWorkerService.getCardTenWorker(id); }
 
 
 }

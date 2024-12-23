@@ -16,13 +16,16 @@ public class CleaningServiceController {
     CleaningServiceService cleaningService;
 
     @GetMapping("/cleaningservice")
-    public List<CleaningService> index(){ return cleaningService.getAllCleaningService(); }
+    public List<CleaningService> index() {
+        return cleaningService.getAllCleaningService(); }
 
     @GetMapping("/cleaningservice/{id}")
-    public Optional<CleaningService> getCleaningService(@PathVariable Integer id)
-    { return cleaningService.getCleaningService(id); }
+    public Optional<CleaningService> getCleaningService(@PathVariable Integer id) {
+        return cleaningService.getCleaningService(id); }
 
     @PostMapping("/cleaningservice/store")
-    public CleaningService savecleaningservice(@RequestBody CleaningService cleaningservice)
-    { return cleaningService.create(cleaningservice) ;}
+    public CleaningService savecleaningservice(@RequestBody CleaningService cleaningservice) {
+        return cleaningService.create(cleaningservice); }
+
+    @PostMapping()
 }
