@@ -29,4 +29,14 @@ public class CleaningServiceImpl implements CleaningServiceService {
     public CleaningService create(CleaningService cleaningservice) {
         return cleaningServiceRepository.save(cleaningservice);
     }
+
+    @Override
+    public CleaningService update(CleaningService cleaningservice) {
+        return cleaningServiceRepository.save(cleaningservice);
+    }
+
+    @Override
+    public void deleteAllEntities() {
+        cleaningServiceRepository.deleteAll();
+    }
 }

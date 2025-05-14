@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
 //Main file which contains requests services for tomcat server.
+@CrossOrigin(origins = "*")
 @RestController
 public class AssetsController {
     @Autowired

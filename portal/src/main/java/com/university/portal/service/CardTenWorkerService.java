@@ -10,8 +10,11 @@ public interface CardTenWorkerService {
 
     public List<CardTenWorker> getAllCarTenWorker();
 
-    public Optional<CardTenWorker> getCardTenWorker(Integer cardtenworkerid);
+    public Optional<CardTenWorker> getCardTenWorker(Integer cardTenWorkerId);
 
     public CardTenWorker update(CardTenWorker cardTenWorker);
 
+    public void deleteAllEntities();
+
+    public void deleteCardTenWorker(Integer cardTenWorkerId);
 }

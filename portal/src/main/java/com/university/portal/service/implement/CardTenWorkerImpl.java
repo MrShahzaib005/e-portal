@@ -26,13 +26,23 @@ public class CardTenWorkerImpl implements CardTenWorkerService {
     }
 
     @Override
-    public Optional<CardTenWorker> getCardTenWorker(Integer cardtenworkerid) {
-        return cardTenWorkerRepository.findById(cardtenworkerid);
+    public Optional<CardTenWorker> getCardTenWorker(Integer cardTenWorkerId) {
+        return cardTenWorkerRepository.findById(cardTenWorkerId);
     }
 
     @Override
     public CardTenWorker update(CardTenWorker cardTenWorker) {
         return cardTenWorkerRepository.save(cardTenWorker);
     }
-    
+
+    @Override
+    public void deleteAllEntities() {
+        cardTenWorkerRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteCardTenWorker(Integer cardTenWorkerId) {
+        cardTenWorkerRepository.deleteById(cardTenWorkerId);
+    }
+
 }

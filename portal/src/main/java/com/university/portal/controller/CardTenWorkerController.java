@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "*")
 @RestController
 public class CardTenWorkerController {
 
@@ -31,5 +31,16 @@ public class CardTenWorkerController {
     public Optional<CardTenWorker> getCardTenWorker(@PathVariable Integer id) {
         return cardTenWorkerService.getCardTenWorker(id); }
 
+    @DeleteMapping("/cardtenworker/delete")
+    public ResponseEntity<Void> deleteAllEntities() {
+        cardTenWorkerService.deleteAllEntities();
+        return ResponseEntity.noContent().build();
+    }
 
+    //Error 405
+    @DeleteMapping("/cardtenworker/delete/{id}")
+    public ResponseEntity<Void> deleteCardTenWorker(@PathVariable Integer id) {
+        cardTenWorkerService.deleteCardTenWorker(id);
+        return ResponseEntity.noContent().build();
+    }
 }

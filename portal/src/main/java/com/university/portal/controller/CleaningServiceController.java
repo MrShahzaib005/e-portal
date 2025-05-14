@@ -1,14 +1,14 @@
 package com.university.portal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.university.portal.model.CleaningService;
 import com.university.portal.service.CleaningServiceService;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "*")
 @RestController
 public class CleaningServiceController {
 
@@ -27,5 +27,14 @@ public class CleaningServiceController {
     public CleaningService savecleaningservice(@RequestBody CleaningService cleaningservice) {
         return cleaningService.create(cleaningservice); }
 
-    @PostMapping()
+    @PostMapping("/cleaningservice/update")
+    public CleaningService updatecleaningservice(@RequestBody CleaningService cleaningservice) {
+        return cleaningService.update(cleaningservice);
+    }
+
+    @DeleteMapping("/cleaningservice/delete")
+    public ResponseEntity<Void> deleteAllEntities() {
+        cleaningService.deleteAllEntities();
+        return ResponseEntity.noContent().build();
+    }
 }
